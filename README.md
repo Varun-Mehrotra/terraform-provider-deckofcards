@@ -1,2 +1,2 @@
-# terraform-provider-cards
-Terraform Provider for Card Decks
+# terraform-provider-deckofcards
+Terraform Provider for Deck of Cards using the official Deck of Cards API
