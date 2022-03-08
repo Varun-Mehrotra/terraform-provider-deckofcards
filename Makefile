@@ -1,10 +1,10 @@
 TEST?=$$(go list ./... | grep -v 'vendor')
 HOSTNAME=hashicorp.com
-NAMESPACE=test
+NAMESPACE=Varun-Mehrotra
 NAME=deckofcards
 BINARY=terraform-provider-${NAME}
 VERSION=0.2
-OS_ARCH=darwin_amd64
+OS_ARCH=darwin_arm64
 
 default: install
 
