@@ -7,9 +7,11 @@ import (
 // Provider -
 func Provider() *schema.Provider {
 	return &schema.Provider{
-		ResourcesMap: map[string]*schema.Resource{},
+		ResourcesMap: map[string]*schema.Resource{
+			"deckofcards_deck": resourceDeck(),
+		},
 		DataSourcesMap: map[string]*schema.Resource{
-			"deckofcards_deck": dataSourceDeck(),
+			// 	"deckofcards_deck": dataSourceDeck(),
 		},
 	}
 }
