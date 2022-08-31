@@ -9,9 +9,10 @@ func Provider() *schema.Provider {
 	return &schema.Provider{
 		ResourcesMap: map[string]*schema.Resource{
 			"deckofcards_deck": resourceDeck(),
+			"deckofcards_pile": resourcePile(),
 		},
 		DataSourcesMap: map[string]*schema.Resource{
-			// 	"deckofcards_deck": dataSourceDeck(),
+			"deckofcards_deck": dataSourceDeck(),
 		},
 	}
 }

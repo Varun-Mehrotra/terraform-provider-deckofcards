@@ -33,5 +33,13 @@ test:
 	go test -i $(TEST) || exit 1
 	echo $(TEST) | xargs -t -n4 go test $(TESTARGS) -timeout=30s -parallel=4
 
+testplan:
+	make install
+	cd examples && rm .terraform.lock.hcl && terraform init && terraform plan
+
+testapply:
+	make install
+	cd examples && rm -f .terraform.lock.hcl && terraform init && terraform apply -auto-approve=true
+
 testacc:
 	TF_ACC=1 go test $(TEST) -v $(TESTARGS) -timeout 120m

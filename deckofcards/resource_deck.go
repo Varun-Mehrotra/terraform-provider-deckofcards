@@ -16,14 +16,13 @@ func resourceDeck() *schema.Resource {
 	return &schema.Resource{
 		CreateContext: resourceDeckCreate,
 		ReadContext:   resourceDeckRead,
-		UpdateContext: resourceDeckUpdate,
+		// UpdateContext: resourceDeckUpdate,
 		DeleteContext: resourceDeckDelete,
 		Schema: map[string]*schema.Schema{
 			// TODO: Refactor this to just ID
 			"deck_id": &schema.Schema{
 				Type:     schema.TypeString,
 				Computed: true,
-				Optional: true,
 				ForceNew: true,
 			},
 			// TODO: Implement multiple decks
@@ -122,6 +121,12 @@ func resourceDeckRead(ctx context.Context, d *schema.ResourceData, m interface{}
 	deck := make(map[string]interface{}, 0)
 	err = json.NewDecoder(r.Body).Decode(&deck)
 	if err != nil {
+		return diag.FromErr(err)
+	}
+
+	// Cases like if the deck does not exist should capture the error the API spits out
+	if _, hasError := deck["error"]; hasError {
+		err := fmt.Errorf("API Error: %s", deck["error"].(string))
 		return diag.FromErr(err)
 	}
 

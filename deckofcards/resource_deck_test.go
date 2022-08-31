@@ -43,7 +43,6 @@ func TestAccDeckofcardsDeckBasic(t *testing.T) {
 // 	}
 // }
 
-
 func testAccCheckDeckofcardsDeckConfigBasic(deckName string) string {
 	return fmt.Sprintf(`resource "deckofcards_deck" "%s" {
 
